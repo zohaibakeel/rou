@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="roulette-game">
+        <div class="top">ROULETTE</div>
+        <div class="header-light" id="headerLight"></div>
+        <div class="screen">
+            <canvas id="rouletteCanvas" width="258" height="258"></canvas>
+            <div class="pin"></div>
+        </div>
+        <div class="controls">
+            <div class="bet">
+                <input type="text" id="betAmount" placeholder="Bet Amount">
+            </div>
+            <div class="button" id="spinButton">Spin</div>
+        </div>
+        <div class="balance">Your Balance:<span id="balanceAmount">100.00</span></div>
+        <div class="output-paper">
+            <div class="result"></div>
+            <div class="close-button" onclick="closeOutputPaper()">×</div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+    <audio id="spinSound" src="spin-sound1.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

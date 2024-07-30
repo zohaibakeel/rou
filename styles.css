@@ -1,0 +1,226 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.roulette-game {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    background-color: #222;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+.roulette-game .top,
+.roulette-game .bottom {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background-color: #444;
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.roulette-game .top {
+    top: 0;
+}
+
+.roulette-game .bottom {
+    bottom: 0;
+}
+
+.roulette-game .screen {
+    width: 260px; /* Ensure consistent width, slightly less than parent */
+    height: 260px;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin: auto; /* Center within parent */
+    top: 70px; /* Space below .top */
+}
+
+.roulette-game .pin {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    z-index: 10;
+}
+
+.roulette-game .controls {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px; /* Adjust this width as needed */
+}
+
+.roulette-game .bet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px; /* Space between bet and button */
+}
+
+.roulette-game .bet input,
+.roulette-game .bet select {
+    width: 100px;
+    height: 40px;
+    margin: 5px 0;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.roulette-game .button {
+    width: 100px;
+    height: 50px;
+    background-color: #f00;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.roulette-game .button:hover {
+    background-color: #c00;
+}
+
+.roulette-game .balance {
+    position: absolute;
+    top: 395px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.roulette-game #balanceAmount {
+    background-color: #fff;
+    color: #000;
+    padding: 3px 5px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.roulette-game .output-paper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 0;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: top 1s ease-out, height 1s ease-out, opacity 0.5s ease-in;
+}
+
+.roulette-game .output-paper.show {
+    top: 130px;
+    height: 200px;
+    opacity: 1;
+}
+
+.roulette-game .output-paper.win {
+    background-color: #fff;
+    border-color: #0f0;
+    color: #333;
+}
+
+.roulette-game .output-paper.lose {
+    background-color: #333;
+    border-color: #f00;
+    color: #fff;
+}
+
+.roulette-game .output-paper .result {
+    color: inherit;
+    font-size: 28px;
+}
+
+.roulette-game .output-paper .multiplier {
+    font-weight: bold;
+}
+
+.roulette-game .output-paper .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 22px;
+    color: #f00;
+}
+
+.header-light {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff0;
+    box-shadow: 0 0 7px #ff0;
+    animation: blink 1s infinite;
+    display: none;
+}
+
+.header-light.blinking {
+    display: block;
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
